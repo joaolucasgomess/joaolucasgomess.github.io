@@ -1,0 +1,252 @@
+style.css
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#agua-btn {
+  padding: 16px 32px;
+  font-size: 1.2rem;
+  color: white;
+  background: linear-gradient(145deg, #00b4db, #0083b0);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 131, 176, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease;
+  animation: pulse 2s infinite;
+}
+
+#agua-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px rgba(0, 131, 176, 0.4);
+  background: linear-gradient(145deg, #0083b0, #00b4db);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Popup base */
+#popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease forwards;
+  z-index: 10;
+}
+
+#popup.hidden {
+  display: none;
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  color: #0083b0;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.4s ease;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  to {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  color: #0083b0;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.5s ease-out, textGlow 2s infinite alternate;
+}
+
+/* PopIn - escala com bounce */
+@keyframes popIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Texto com brilho suave */
+@keyframes textGlow {
+  0% {
+    text-shadow: 0 0 10px #00b4db, 0 0 20px #00b4db;
+  }
+  100% {
+    text-shadow: 0 0 15px #0083b0, 0 0 30px #0083b0;
+  }
+}
+
+.popup-content {
+  background: white;
+  padding: 2rem 3rem;
+  border-radius: 20px;
+  font-size: 1.5rem;
+  color: #0083b0;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: popIn 0.5s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.emoji {
+  font-size: 3rem;
+  animation: growPlant 1s ease-in-out forwards;
+  margin-bottom: 1rem;
+}
+
+@keyframes growPlant {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.4);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Corações flutuando */
+.hearts-container {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  transform: rotate(45deg);
+  animation: floatUp 3s ease-in-out infinite;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+}
+
+.heart::before {
+  top: -10px;
+  left: 0;
+}
+.heart::after {
+  left: -10px;
+  top: 0;
+}
+
+.delay-1 {
+  left: -30px;
+  animation-delay: 0.5s;
+}
+
+.delay-2 {
+  left: 30px;
+  animation-delay: 1s;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(45deg) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-150px) rotate(45deg) scale(1.5);
+    opacity: 0;
+  }
+}
+
+#agua-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+  background: #ccc;
+  color: #666;
+  box-shadow: none;
+  animation: none;
+  transform: none;
+}
